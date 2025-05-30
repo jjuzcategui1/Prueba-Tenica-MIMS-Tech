@@ -12,6 +12,7 @@ Esto es una pruebapara DeVops que demuestra un entorno de Integración Continua 
 │   └── package.json        # Dependencias de la aplicación Node.js
 ├── k8s/
 │   ├── deployment.yaml     # Manifiesto de Deployment de Kubernetes
+│   ├── namespace.yaml      # Manifiesto de Namespace de Kubernetes
 │   ├── service.yaml        # Manifiesto de Service de Kubernetes
 │   └── secret.yaml         # Manifiesto de Kubernetes Secret (mock)
 ├── Dockerfile              # Dockerfile optimizado para la aplicación Node.js
