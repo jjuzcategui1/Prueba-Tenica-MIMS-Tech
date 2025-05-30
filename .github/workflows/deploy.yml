@@ -1,0 +1,86 @@
+name: CI/CD Pipeline for Node.js App
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+
+    - name: Install dependencies
+      working-directory: ./app
+      run: npm install
+
+    - name: Lint (optional but recommended)
+      # Aquí podrías integrar ESLint u otra herramienta de linting.
+      # Por simplicidad, este paso está comentado si no tienes un linter configurado.
+      # working-directory: ./app
+      # run: npm run lint # Asume que tienes un script 'lint' en tu package.json
+      run: echo "Linting step skipped for demo purposes. Implement your linter here."
+
+    - name: Set up Kind Kubernetes cluster
+      uses: helm/kind-action@v1.2.0
+      with:
+        node_image: kindest/node:v1.29.2 # Specify a Kind node image version compatible with your setup
+
+    - name: Build Docker image
+      run: |
+        docker build -t devops-challenge-app:latest .
+
+    - name: Load Docker image into Kind cluster
+      run: |
+        kind load docker-image devops-challenge-app:latest --name kind
+
+    - name: Deploy Kubernetes Namespace
+      run: |
+        kubectl apply -f k8s/namespace.yaml
+
+    - name: Deploy Kubernetes Secret
+      run: |
+        kubectl apply -f k8s/secret.yaml
+
+    - name: Deploy Kubernetes manifests
+      run: |
+        kubectl apply -f k8s/deployment.yaml
+        kubectl apply -f k8s/service.yaml
+
+    - name: Validate Deployment Rollout
+      run: |
+        kubectl rollout status deployment/devops-challenge-app -n devops-challenge --timeout=5m
+
+    - name: Expose NodePort for external access (for validation)
+      # Kind puede hacer port-forwarding para NodePorts
+      # Sin embargo, para validación dentro del propio workflow de GA, podemos usar kubectl port-forward
+      # O mejor aún, dado que es un ClusterIP, podemos usar 'kubectl exec' en un pod para 'curl'
+      run: |
+        echo "Attempting to validate service reachability within the cluster..."
+
+    - name: Wait for service to be ready
+      run: |
+        # Wait for the service to be ready for some time (e.g., 30 seconds)
+        # This is a simple wait, more robust solutions might poll the service.
+        sleep 30
+
+    - name: Validate application health check
+      run: |
+        # Get the service IP or use a temporary pod to curl the service
+        # For ClusterIP, we need to be inside the cluster or use port-forwarding.
+        # Let's use a temporary busybox pod to curl the service internally.
+        kubectl run -n devops-challenge temp-curl-pod --image=busybox --rm -it --restart=Never --command -- \
+          sh -c 'wget -q -O - http://devops-challenge-app-service.devops-challenge/health | grep "status\":\"ok"'
+
+

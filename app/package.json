@@ -1,0 +1,13 @@
+{
+  "name": "devops-challenge-app",
+  "version": "1.0.0",
+  "description": "Simple Node.js app for DevOps challenge",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "test": "echo \"Error: no tests specified\" && exit 1"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}
