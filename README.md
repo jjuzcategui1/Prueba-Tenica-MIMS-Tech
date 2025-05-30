@@ -115,6 +115,8 @@ Una vez desplegada la aplicación, puedes validar su estado:
     kubectl get services -n devops-challenge  
     curl http://localhost:3000/health
 
+    Si la salida contiene status":"ok", el servicio está funcionando correctamente.
+
 ## Ejecución de la Pipeline en GitHub
 
 Para ejecutar la pipeline de CI/CD en GitHub Actions:
