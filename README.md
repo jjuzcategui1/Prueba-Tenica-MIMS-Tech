@@ -29,6 +29,30 @@ Para ejecutar y probar este entorno localmente, necesitarás:
     * [Guía de instalación de kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/)
 * *Node.js y npm:* Para ejecutar y probar la aplicación Node.js localmente si es necesario.
 
+Ejemplos para instalar kind y kubectl
+
+Kind
+# Descargar el binario de Kind
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/latest/kind-linux-amd64
+# Dar permisos de ejecución
+chmod +x ./kind
+# Moverlo al directorio de ejecutables
+sudo mv ./kind /usr/local/bin/kind
+# Verifica la instalacion 
+kind version
+
+Kubectl
+# Descargar el binario
+curl -LO "https://dl.k8s.io/release/$(curl -sL https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+# Dar permisos de ejecución
+chmod +x kubectl
+# Moverlo al directorio de ejecutables
+sudo mv kubectl /usr/local/bin/
+# Verificar la instalación
+kubectl version --client
+
+
+
 ## Instalación y Configuración Local
 
 Sigue estos pasos para configurar y levantar el entorno localmente:
@@ -85,6 +109,11 @@ Una vez desplegada la aplicación, puedes validar su estado:
       sh -c 'wget -q -O - [http://devops-challenge-app-service.devops-challenge/health](http://devops-challenge-app-service.devops-challenge/health) | grep "status\":\"ok"'
     
     Si la salida contiene status":"ok", el servicio está funcionando correctamente.
+
+    Tambien se puede ejecutar los siguientes comandos:
+    kubectl get pods -n devops-challenge 
+    kubectl get services -n devops-challenge  
+    curl http://localhost:3000/health
 
 ## Ejecución de la Pipeline en GitHub
 
