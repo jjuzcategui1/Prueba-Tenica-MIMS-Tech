@@ -9,7 +9,7 @@ COPY package.json package-lock.json /app/
 RUN npm install --only=production
 
 # Copy app source
-COPY . .
+COPY . ./app
 
 # Stage 2: Crea la imagen final de produccion 
 FROM node:20-alpine
