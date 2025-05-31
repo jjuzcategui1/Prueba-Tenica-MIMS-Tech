@@ -4,6 +4,8 @@ FROM node:20-alpine AS builder
 # Create app directory
 WORKDIR /app/
 
+RUN ls -l
+
 COPY package*.json /app/
 
 RUN ls -l /app/
