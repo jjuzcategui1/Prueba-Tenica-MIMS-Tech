@@ -39,7 +39,7 @@ jobs:
 
     - name: Build Docker image
       run: |
-        docker build -t devops-challenge-app:latest ./app
+        docker build -t devops-challenge-app:latest .
 
     - name: Create cluster Kind
       run:  |
