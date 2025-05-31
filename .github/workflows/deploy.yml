@@ -26,7 +26,7 @@ jobs:
       run: npm install
 
     - name: Ejecutar ESLint con reglas estrictas
-      run: npm run lint --max-warnings=0
+      run: cd app && npm run lint --max-warnings=0
 
     - name: Set up Kind Kubernetes cluster
       uses: helm/kind-action@v1.3.0
