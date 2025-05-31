@@ -41,7 +41,7 @@ jobs:
       run: |
         docker build -t devops-challenge-app:latest ./app
 
-    - name: Crear el cluster Kind
+    - name: Create cluster Kind
       run:  |
         kind create cluster --name kind
 
