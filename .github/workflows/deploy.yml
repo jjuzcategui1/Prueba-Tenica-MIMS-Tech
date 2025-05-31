@@ -14,12 +14,12 @@ jobs:
 
     steps:
     - name: Checkout code
-      uses: actions/checkout@v3
+      uses: actions/checkout@v4
 
     - name: Set up Node.js
-      uses: actions/setup-node@v3
+      uses: actions/setup-node@v4
       with:
-        node-version: '18'
+        node-version: '20'
 
     - name: Install dependencies
       working-directory: ./app
@@ -35,7 +35,7 @@ jobs:
     - name: Set up Kind Kubernetes cluster
       uses: helm/kind-action@v1.2.0
       with:
-        node_image: kindest/node:v1.29.2 # Specify a Kind node image version compatible with your setup
+        node_image: kindest/node:v1.33.1 # Specify a Kind node image version compatible with your setup
 
     - name: Build Docker image
       run: |
