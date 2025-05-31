@@ -22,7 +22,7 @@ jobs:
         node-version: '18'
 
     - name: Install dependencies
-      working-directory: ./app
+      working-directory: ./app/
       run: npm install
 
     - name: Lint (optional but recommended)
