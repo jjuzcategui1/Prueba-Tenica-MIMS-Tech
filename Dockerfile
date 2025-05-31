@@ -13,6 +13,7 @@ RUN npm install --omit=dev
 
 # Copy app source
 COPY . /app/
+RUN ls -l /app/
 
 # Stage 2: Crea la imagen final de produccion 
 FROM node:20-alpine
