@@ -2,9 +2,9 @@
 FROM node:20-alpine AS builder
 
 # Create app directory
-WORKDIR /app/
+WORKDIR /usr/src/app
 
-COPY package*.json /app/
+COPY package*.json ./
 
 RUN npm install --only=production
 
@@ -14,7 +14,7 @@ COPY . .
 # Stage 2: Crea la imagen final de produccion 
 FROM node:20-alpine
 
-WORKDIR /app/
+WORKDIR /usr/src/app
 
 # Copia las dependencias a produccion y el codigo de la aplicacion 
 COPY --from=builder /app/node_modules ./node_modules
