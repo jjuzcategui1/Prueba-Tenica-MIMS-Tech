@@ -33,7 +33,7 @@ jobs:
       run: echo "Linting step skipped for demo purposes. Implement your linter here."
 
     - name: Set up Kind Kubernetes cluster
-      uses: helm/kind-action@v1.2.0
+      uses: helm/kind-action@v1.3.0
       with:
         node_image: kindest/node:v1.33.1 # Specify a Kind node image version compatible with your setup
 
