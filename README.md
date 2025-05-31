@@ -9,7 +9,6 @@ Esto es una pruebapara DeVops que demuestra un entorno de Integración Continua 
 │       └── deploy.yml      # Workflow de GitHub Actions para CI/CD
 ├── app/
 │   ├── app.js              # Aplicación demo Node.js (Express)
-│   └── Dockerfile          # Dockerfile optimizado para la aplicación Node.js
 │   └── package-lock.json   # Dependencias de la aplicación Node.js
 │   └── package.json        # Dependencias de la aplicación Node.js
 ├── k8s/
@@ -17,6 +16,7 @@ Esto es una pruebapara DeVops que demuestra un entorno de Integración Continua 
 │   ├── namespace.yaml      # Manifiesto de Namespace de Kubernetes
 │   ├── service.yaml        # Manifiesto de Service de Kubernetes
 │   └── secret.yaml         # Manifiesto de Kubernetes Secret (mock)
+├── Dockerfile              # Dockerfile optimizado para la aplicación Node.js
 └── README.md               # Este archivo de documentación
 
 ## Requisitos Previos

@@ -12,16 +12,17 @@ RUN npm install --only=production
 COPY ../app/ .
 
 # Stage 2: Crea la imagen final de produccion 
-FROM node:20-alpine
+#FROM node:20-alpine
 
-WORKDIR /app
+#WORKDIR /app
 
 # Copia las dependencias a produccion y el codigo de la aplicacion 
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/app.js ./app
+#COPY --from=builder /app/node_modules ./node_modules
+#COPY --from=builder /app/app.js ./app
+
+# Run the application
+CMD ["node", "app.js"]
 
 # Expose port
 EXPOSE 3000
 
-# Run the application
-CMD ["node", "app.js"]
