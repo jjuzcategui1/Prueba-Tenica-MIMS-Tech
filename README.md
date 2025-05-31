@@ -146,12 +146,7 @@ Puedes ver el progreso del workflow en la pestaña "Actions" de tu repositorio d
 
 * *Observabilidad:*
     * Integración de Prometheus para métricas y Grafana para dashboards.
-    * Configuración de un stack de logging (e.g., Fluentd, Elasticsearch, Kibana/Loki, Grafana).
-    * Implementación de trazabilidad distribuida (e.g., Jaeger, OpenTelemetry).
-* *Tests Automáticos:*
-    * Añadir pasos de pruebas unitarias, de integración y/o E2E en el workflow de CI/CD. Por ejemplo, un script npm test en la fase de build-and-deploy.
-* *Gestión de Secrets más robusta:*
-    * Integrar con un sistema de gestión de secretos real como HashiCorp Vault, Azure Key Vault, AWS Secrets Manager, o Google Secret Manager.
+    * Configuración de un stack de logging (e.g., Fluentd, Elasticsearch, Kibana/Loki, Grafana).                
     * Utilizar herramientas como External Secrets Operator para sincronizar secretos con proveedores externos.
 * *Despliegue a Múltiples Entornos:* Extender el workflow para desplegar a entornos de staging y producción.
 * *Herramientas de Empaquetado:* Utilizar Helm para empaquetar y gestionar los despliegues de Kubernetes, especialmente para aplicaciones más complejas.
