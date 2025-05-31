@@ -4,10 +4,10 @@ FROM node:20-alpine AS builder
 # Create app directory
 WORKDIR /app/
 
-COPY package*.json /app/
+COPY package.json package-lock.json /app/
 
 RUN npm install --only=production
-
+    
 # Copy app source
 COPY . /app/
 
