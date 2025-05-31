@@ -2,9 +2,9 @@
   "name": "devops-challenge-app",
   "version": "1.0.0",
   "description": "Node.js application for DevOps Challenge",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node app.js",
     "dev": "nodemon server.js",
     "test": "jest --coverage --verbose",
     "lint": "eslint .",
