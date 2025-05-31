@@ -142,11 +142,11 @@ Puedes ver el progreso del workflow en la pestaña "Actions" de tu repositorio d
 * *Separación de Manifiestos:* Los manifiestos de Kubernetes están separados por tipo (deployment.yaml, service.yaml, secret.yaml) para mejorar la organización y mantenibilidad.
 * *Namespace Dedicado:* El uso de un Namespace (devops-challenge) ayuda a organizar y aislar los recursos de la aplicación dentro del clúster.
 
-## Consideraciones Adicionales y Posibles Mejoras (Bonus)
+## Consideraciones Adicionales y Posibles Mejoras
 
 * *Observabilidad:*
     * Integración de Prometheus para métricas y Grafana para dashboards.
-    * Configuración de un stack de logging (e.g., Fluentd, Elasticsearch, Kibana/Loki, Grafana).                
+    * Configuración de un stack de logging (Kibana/Loki, Grafana).                
     * Utilizar herramientas como External Secrets Operator para sincronizar secretos con proveedores externos.
 * *Despliegue a Múltiples Entornos:* Extender el workflow para desplegar a entornos de staging y producción.
 * *Herramientas de Empaquetado:* Utilizar Helm para empaquetar y gestionar los despliegues de Kubernetes, especialmente para aplicaciones más complejas.
