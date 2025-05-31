@@ -1,9 +1,27 @@
-FROM node:18-alpine
+# Stage 1: Construir la Aplicacion Node.js
+FROM node:18-alpine AS builder
+
+# Create app directory
 WORKDIR /app
+
 COPY package*.json ./
-RUN npm install --only=production
+
+RUN npm ci --only=production
+
+# Copy app source
 COPY . .
-CMD ["node", "app.js"]
+
+# Stage 2: Crea la imagen final de produccion 
+FROM node:18-alpine
+
+WORKDIR /app
+
+# Copia las dependencias a produccion y el codigo de la aplicacion 
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/app.js .
+
+# Expose port
 EXPOSE 3000
 
-
+# Run the application
+CMD ["node", "app.js"]
