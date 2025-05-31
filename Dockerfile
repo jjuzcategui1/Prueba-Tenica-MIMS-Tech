@@ -6,19 +6,19 @@ WORKDIR /app
 
 COPY package*.json ./
 
-RUN npm ci --only=production
+RUN npm install --only=production
 
 # Copy app source
 COPY . .
 
 # Stage 2: Crea la imagen final de produccion 
-FROM node:20-alpine
+#FROM node:20-alpine
 
-WORKDIR /app
+#WORKDIR /app
 
 # Copia las dependencias a produccion y el codigo de la aplicacion 
-COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/app.js .
+#COPY --from=builder /app/node_modules ./node_modules
+#COPY --from=builder /app/app.js .
 
 # Expose port
 EXPOSE 3000
