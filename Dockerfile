@@ -1,5 +1,5 @@
 # Stage 1: Construir la Aplicacion Node.js
-FROM node:20-alpine AS builder
+FROM node:18-alpine AS builder
 
 # Create app directory
 WORKDIR /app
@@ -12,7 +12,7 @@ RUN npm ci --only=production
 COPY . .
 
 # Stage 2: Crea la imagen final de produccion 
-FROM node:20-alpine
+FROM node:18-alpine
 
 WORKDIR /app
 
