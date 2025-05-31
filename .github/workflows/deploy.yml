@@ -25,12 +25,8 @@ jobs:
       working-directory: ./app
       run: npm install
 
-    - name: Lint (optional but recommended)
-      # Aquí podrías integrar ESLint u otra herramienta de linting.
-      # Por simplicidad, este paso está comentado si no tienes un linter configurado.
-      # working-directory: ./app
-      # run: npm run lint # Asume que tienes un script 'lint' en tu package.json
-      run: echo "Linting step skipped for demo purposes. Implement your linter here."
+    - name: Ejecutar ESLint con reglas estrictas
+      run: npm run lint --max-warnings=0
 
     - name: Set up Kind Kubernetes cluster
       uses: helm/kind-action@v1.3.0
