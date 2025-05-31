@@ -41,6 +41,14 @@ jobs:
       run: |
         docker build -t devops-challenge-app:latest ./app
 
+    - name: Crear el cluster Kind
+      run:  |
+        kind create cluster --name kind
+
+    - name: Verificar que el cluster está activo
+      run:  |
+        kubectl cluster-info --context kind-kind
+
     - name: Load Docker image into Kind cluster
       run: |
         kind load docker-image devops-challenge-app:latest --name kind
