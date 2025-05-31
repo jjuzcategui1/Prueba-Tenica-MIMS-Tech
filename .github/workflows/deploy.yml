@@ -25,6 +25,10 @@ jobs:
       working-directory: ./app
       run: npm install
 
+    - name: Debug installed dependencies
+      run: npm list --depth=0
+
+
     - name: Ejecutar ESLint con reglas estrictas
       run: cd app && npm run lint --max-warnings=0
 
