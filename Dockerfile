@@ -18,7 +18,7 @@ WORKDIR /app
 
 # Copia las dependencias a produccion y el codigo de la aplicacion 
 COPY --from=builder /app/node_modules ./node_modules
-COPY --from=builder /app/app.js .
+COPY --from=builder /app/app.js ./app
 
 # Expose port
 EXPOSE 3000
