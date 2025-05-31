@@ -4,7 +4,7 @@ FROM node:20-alpine AS builder
 # Create app directory
 WORKDIR /app
 
-COPY package*.json ./
+COPY package*.json /app/        
 
 RUN npm install --only=production
 
