@@ -9,6 +9,7 @@ COPY package*.json /app/
 #RUN ls -l /app/
 
 RUN npm install --only=production
+RUN npm install --omit=dev
 
 # Copy app source
 COPY . /app/
