@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: devops-challenge-app
+  name: devops-challenge-app-service
   namespace: devops-challenge
 spec:
   selector:
