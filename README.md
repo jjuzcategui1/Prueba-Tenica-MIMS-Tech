@@ -116,6 +116,13 @@ Una vez desplegada la aplicación, puedes validar su estado:
     kubectl get services -n devops-challenge  
     curl http://localhost:3000/health
 
+    De no funsionar deber realizar un port-forward, aca un ejemplo:
+
+    kubectl port-forward service/devops-challenge-app-service 8080:80 -n devops-challenge
+
+    Luego ejecutan curl http://localhost:8080/health o desde el navegador con solo colocar la url.
+
+
     Si la salida contiene status":"ok", el servicio está funcionando correctamente.
 
 ## Ejecución de la Pipeline en GitHub
